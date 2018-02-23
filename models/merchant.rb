@@ -14,8 +14,27 @@ class Merchant
     VALUES
     ($1)
     RETURNING id;"
-    values = (@name)
+    values = [@name]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
+  end
+
+  def update()
+    sql = "UPDATE merchants SET name = $1
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def Merchant.all()
+    sql = "SELECT * FROM merchants"
+    results = SqlRunner.run (sql)
+    return results.map { |merchant| Merchant.new(merchant) }
+  end
+
+
+  def Merchant.delete_all()
+    sql = "DELETE FROM merchants"
+    SqlRunner.run(sql)
   end
 end
