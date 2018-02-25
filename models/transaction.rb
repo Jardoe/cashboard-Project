@@ -8,7 +8,7 @@ class Transaction
     @id = options['id'].to_i if options['id']
     @merchant_id = options['merchant_id']
     @tag_id = options['tag_id']
-    @amount = options['amount']
+    @amount = options['amount'].to_f
   end
 
   def save()
@@ -31,12 +31,38 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
+  def tag()
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [@tag_id]
+    results = SqlRunner.run(sql, values)
+    return Tag.new(results)
+  end
+
+  def merchant()
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [@merchant_id]
+    results = SqlRunner.run(sql, values)
+    return Merchant.new(results)
+  end
+
+  def Transaction.total()
+    sql = "SELECT SUM(amount) FROM transactions"
+    result = SqlRunner.run(sql)[0]['sum']
+    return result
+  end
+
+  def Transaction.find(id)
+    sql = "SELECT * FROM transactions WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Transaction.new(results.first())
+  end
+
   def Transaction.all()
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run (sql)
     return results.map { |transaction| Transaction.new(transaction) }
   end
-
 
   def Transaction.delete_all()
     sql = "DELETE FROM transactions"

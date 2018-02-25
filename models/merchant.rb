@@ -19,11 +19,31 @@ class Merchant
     @id = results[0]['id'].to_i
   end
 
+  def total()
+    sql = "SELECT amount FROM transactions WHERE transactions.merchant_id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)[0]['amount'].to_f.round(2)
+  end
+
   def update()
     sql = "UPDATE merchants SET name = $1
     WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def transactions()
+    sql = "SELECT amount FROM transactions WHERE transactions.merchant_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |transaction| Transaction.new(transaction)  }
+  end
+
+  def Merchant.find(id)
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Merchant.new(results.first())
   end
 
   def Merchant.all()

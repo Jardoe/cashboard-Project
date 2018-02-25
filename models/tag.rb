@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner.rb")
+require("pry-byebug")
 
 class Tag
   attr_reader(:id, :type)
@@ -24,6 +25,40 @@ class Tag
     WHERE id = $2"
     values = [@type, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def merchants()
+    sql = "
+      SELECT merchants.* FROM merchants
+      INNER JOIN transactions t ON t.merchant_id = merchants.id
+      WHERE t.tag_id = $1;"
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      return results.map { |merchant| Merchant.new(merchant) }
+  end
+
+  def total()
+    sql = "
+      SELECT SUM (amount) FROM transactions
+      INNER JOIN tags ON tags.id = transactions.tag_id
+      WHERE tags.id = $1"
+      values = [@id]
+      result = SqlRunner.run(sql, values)[0]["sum"].to_f
+      return result
+  end
+
+  def transactions()
+    sql = "SELECT amount FROM transactions WHERE transactions.tag_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |transaction| Transaction.new(transaction)  }
+  end
+
+  def Tag.find(id)
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Tag.new(results.first())
   end
 
   def Tag.all()

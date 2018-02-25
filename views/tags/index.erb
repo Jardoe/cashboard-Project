@@ -1,0 +1,15 @@
+<h1>Categories</h1>
+  <table>
+    <tr>
+      <th>Category type</th>
+      <th></th>
+      <th>Total spent</th>
+    </tr>
+    <% for tag in @tags %>
+    <tr>
+      <td><a href="/categories/<%= tag.id %>"><%= tag.type %></a></td>
+      <td>|</td>
+      <td>£<%= tag.total %></td>
+    </tr>
+    <% end %>
+  </table>

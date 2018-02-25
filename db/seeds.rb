@@ -31,11 +31,13 @@ transaction1 = Transaction.new({"merchant_id" => merchant1.id, "tag_id" => tag2.
 transaction2 = Transaction.new({"merchant_id" => merchant2.id, "tag_id" => tag4.id, "amount" => 9.99})
 transaction3 = Transaction.new({"merchant_id" => merchant3.id, "tag_id" => tag1.id, "amount" => 48.98})
 transaction4 = Transaction.new({"merchant_id" => merchant4.id, "tag_id" => tag3.id, "amount" => 500})
+transaction5 = Transaction.new({"merchant_id" => merchant3.id, "tag_id" => tag1.id, "amount" => 20.00})
 
 transaction1.save()
 transaction2.save()
 transaction3.save()
 transaction4.save()
+transaction5.save()
 
 binding.pry
 nil

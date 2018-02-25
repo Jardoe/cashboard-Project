@@ -1,0 +1,23 @@
+<h1>Scrimp</h1>
+
+
+<p>Total spent: £<%= @total %></p>
+
+<table>
+  <tr>
+    <th><a href="/categories">Category</a></th>
+    <th></th>
+    <th><a href="/merchants">Merchant</a></th>
+    <th></th>
+    <th>Amount</th>
+  </tr>
+  <% for transaction in @transactions %>
+  <tr>
+    <td><a href="/categories/<%=transaction.tag_id%>"><%= transaction.tag.type %></a></td>
+    <td>|</td>
+    <td><a href="/merchants/<%= transaction.merchant_id%>"><%= transaction.merchant.name %></a></td>
+    <td>|</td>
+    <td>£<%= transaction.amount %></td>
+  </tr>
+  <% end %>
+</table>

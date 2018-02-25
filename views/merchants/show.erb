@@ -1,0 +1,16 @@
+<h1>Merchant: <%= @merchant.name %> </h1>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th>Total spent</th>
+    </tr>
+    <% for transaction in @transactions%>
+    <tr>
+      <td>Date tba</td>
+      <td>|</td>
+      <td>£<%= transaction.amount %></td>
+    </tr>
+    <% end %>
+  </table>
