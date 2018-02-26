@@ -1,7 +1,6 @@
 
 <p>Total spent: £<%= @total %></p>
 
-<p>Add a transaction</p>
 
 <table>
   <tr>
@@ -25,7 +24,7 @@
       <input class="btn btn--action" action"" type='submit' value="Edit">
     </form>
     </td>
-    <td><form class="" action="/" method="get">
+    <td><form class="" action="/transactions/<%=transaction.id%>/delete" method="get">
       <input class="btn btn--action" type='submit' value="Delete"></td>
     </form>
   </tr>

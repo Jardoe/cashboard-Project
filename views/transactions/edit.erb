@@ -1,0 +1,32 @@
+<h1>Edit this transaction:</h1>
+
+
+<form class="" action="transactions/<%= @transaction.id%>" method="post">
+  <label for="tag-select"> Select Category: </label>
+  <select name="tag_id" id="tag_select" selected="<=% @transaction.tag_id %>">
+    <% for tag in @tags %>
+      <% if tag.id == @transaction.tag_id %>
+        <option value=<%= tag.id %> selected><%=tag.type%></option>
+      <% else %>
+        <option value=<%= tag.id%>> <%=tag.type%> </option>
+      <% end %>
+    <% end %>
+  </select>
+
+  <label for="merchant-select">  Select Merchant:  </label>
+    <select name="merchant_id" id="merchant_select" selected="<%= @transaction.merchant_id %>">
+      <% @merchants.each do |merchant| %>
+        <% if merchant.id == @transaction.merchant_id %>
+          <option value=<%= merchant.id %> selected><%=merchant.name%></option>
+        <% else %>
+          <option value=<%= merchant.id%>><%= merchant.name%></option>
+        <% end %>
+      <% end %>
+    </select>
+
+  <label for="amount">Amount: </label>
+  <input type="number" name="amount" value="<%= @transaction.amount %>"/>
+
+  <input type="submit" value="Edit transaction">
+
+</form>
