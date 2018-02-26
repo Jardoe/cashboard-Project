@@ -36,7 +36,16 @@ get '/transactions/:id/view' do
   erb(:"transactions/show")
 end
 
-post '/tranasctions/:id/delete' do
+get '/transactions/:id/delete?' do
+  @transaction = Transaction.find(params[:id])
+  erb(:"transactions/delete?")
+end
+
+post '/transactions/:id/delete?' do
   Transaction.delete(params[:id])
-  redirect to (:"transactions/delete")
+  redirect to (:"transactions/deleted")
+end
+
+get '/transactions/deleted' do
+  erb(:"transactions/deleted")
 end
