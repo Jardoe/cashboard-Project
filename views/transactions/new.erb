@@ -1,0 +1,13 @@
+<h1>Add a new transaction</h1>
+
+<form action="/transactions" method="post">
+  <label>
+    Merchant:
+    <select name="merchant_id">
+      <% for merchant in @merchants %>
+      <option value="<%= merchant.id %>"><%=merchant.id%></option>
+      <% end %>
+
+    </select>
+  </label>
+</form>

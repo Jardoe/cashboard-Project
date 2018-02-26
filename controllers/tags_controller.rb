@@ -13,3 +13,7 @@ get '/categories/:id' do
   @transactions = @tag.transactions
   erb(:"tags/show")
 end
+
+post 'categories/:id/delete' do
+  
+end

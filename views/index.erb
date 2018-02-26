@@ -1,15 +1,17 @@
-<h1>Scrimp</h1>
-
 
 <p>Total spent: £<%= @total %></p>
 
+<p>Add a transaction</p>
+
 <table>
   <tr>
-    <th><a href="/categories">Category</a></th>
+    <th>Category</th>
     <th></th>
-    <th><a href="/merchants">Merchant</a></th>
+    <th>Merchant</th>
     <th></th>
-    <th>Amount</th>
+    <th>Amount (GCS)</th>
+    <th></th>
+    <th></th>
   </tr>
   <% for transaction in @transactions %>
   <tr>
@@ -17,7 +19,15 @@
     <td>|</td>
     <td><a href="/merchants/<%= transaction.merchant_id%>"><%= transaction.merchant.name %></a></td>
     <td>|</td>
-    <td>£<%= transaction.amount %></td>
+    <td><img src="/images/credit.png"> <%= transaction.amount %></td>
+    <td>|</td>
+    <td><form class="" action="/transactions/<%=transaction.id%>/edit" method="get">
+      <input class="btn btn--action" action"" type='submit' value="Edit">
+    </form>
+    </td>
+    <td><form class="" action="/" method="get">
+      <input class="btn btn--action" type='submit' value="Delete"></td>
+    </form>
   </tr>
   <% end %>
 </table>
