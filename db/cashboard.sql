@@ -16,5 +16,5 @@ CREATE TABLE transactions(
   id SERIAL4 PRIMARY KEY,
   amount FLOAT NOT NULL,
   merchant_id INT4 REFERENCES merchants(id),
-  tag_id INT4 REFERENCES tags(id)
+  tag_id INT4 REFERENCES tags(id),
 );

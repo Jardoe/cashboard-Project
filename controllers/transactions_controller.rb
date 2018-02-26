@@ -59,3 +59,7 @@ end
 get '/transactions/deleted' do
   erb(:"transactions/deleted")
 end
+
+get '/hyperspace' do
+  erb(:'hyperspace')
+end

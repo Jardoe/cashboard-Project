@@ -1,18 +1,103 @@
+
 .logo {
   height: 100px;
-  width: 100px
+  width: 100px;
+  padding: 10px 10px 10px 10px;
+  margin: 0px auto;
+  align-items: center;
+  display: flex;
+
 }
 
-/* @font-face {
+@font-face {
   font-family: 'Starjedi';
-    src: url(fonts/Starjedi.ttf) format("truetype");
-} */
+  src: local(Starjedi.ttf) format("truetype");
+}
+
+.logo_words {
+  font-family: 'Starjedi';
+  background-color: #222;
+  color: white;
+
+}
+
+a:link{color: #ddd;}
+
+a:visited{color: #ddd;}
+
+a:hover{color: #9d4f5f;}
+
+a:active{color: #9d4f5f;}
+
+*{
+  text-decoration: none;
+}
 
 header {
-  background-color: red;
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  font-size: 3em;
+  color: black;
+  border-bottom: 6px solid #9d4f5f;
+  width: 100%;
+  top: 0px;
+  z-index: 0;
+}
+
+body {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 20px;
+  background-color: #151515;
+  color: #ddd;
+  z-index: 0;
+}
+
+.table {
+
+  background-color: #282727;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ddd;
+  border-bottom: 6px solid #9d4f5f;
+  z-index: 0
 
 }
 
 nav {
-  flex-direction: row;
+  color: #ddd;
+  display: inline-flex;
+}
+
+.star-right{
+z-index: -1;
+display: flex;
+top: 0;
+right: 0;
+height: 1700px;
+background-repeat: no-repeat;
+background-position: right center;
+background-size: auto 100%;
+background-image: url(https://static-mh.content.disney.io/starwars/assets/background/bg_starsR-655c85e404d4.jpg);
+}
+
+
+.star-left {
+  z-index: -1;
+  left: 0;
+  top: 0;
+  display: flex;
+  height: 1700px;
+  background-repeat: no-repeat;
+  background-image: url(https://static-mh.content.disney.io/starwars/assets/background/bg_starsL-fd4661a3ccea.jpg);
+  background-position: left, center;
+  background-size: auto 100%;
+}
+
+.hyperspace {
+  background-image: url("/hyperspace.gif");
+  background-size: 100%;
+  width: 100vw;
+  height: 100vh;
 }
