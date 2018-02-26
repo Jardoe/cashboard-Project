@@ -32,6 +32,16 @@ get '/transactions/:id/edit' do
   erb( :"transactions/edit" )
 end
 
+post '/transactions/:id' do
+  transaction = Transaction.new(params)
+  transaction.update()
+  redirect to (:'transactions/edited')
+end
+
+get '/transactions/edited' do
+  erb(:"transactions/edited")
+end
+
 get '/transactions/:id/view' do
   erb(:"transactions/show")
 end

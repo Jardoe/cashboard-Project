@@ -20,9 +20,13 @@ class Merchant
   end
 
   def total()
-    sql = "SELECT amount FROM transactions WHERE transactions.merchant_id = $1"
-    values = [@id]
-    SqlRunner.run(sql, values)[0]['amount'].to_f.round(2)
+    sql = "
+      SELECT SUM (amount) FROM transactions
+      INNER JOIN merchants ON merchants.id = transactions.merchant_id
+      WHERE merchants.id = $1"
+      values = [@id]
+      result = SqlRunner.run(sql, values)[0]["sum"].to_f
+      return result
   end
 
   def update()

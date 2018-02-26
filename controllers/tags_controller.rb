@@ -7,13 +7,23 @@ get '/categories' do
   erb(:"tags/index")
 end
 
+get "/categories/new" do
+  erb(:"tags/new")
+end
+
+post "/categories/new" do
+  tag = Tag.new(params)
+  tag.save()
+  redirect to (:'categories/added')
+end
+
+get '/categories/added' do
+  erb(:'tags/added')
+end
+
 
 get '/categories/:id' do
   @tag = Tag.find(params['id'].to_i)
   @transactions = @tag.transactions
   erb(:"tags/show")
-end
-
-post 'categories/:id/delete' do
-  
 end

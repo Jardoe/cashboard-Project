@@ -28,7 +28,7 @@ class Transaction
     ($1, $2, $3)
     WHERE id = $4"
     values = [@merchant_id, @tag_id, @amount, @id]
-    SqlRunner.run(sql, values)
+    result = SqlRunner.run(sql, values)
   end
 
   def tag()
