@@ -2,22 +2,23 @@ require_relative("../db/sql_runner.rb")
 
 class Transaction
 
-  attr_reader(:id, :merchant_id, :tag_id, :amount)
+  attr_reader(:id, :merchant_id, :tag_id, :amount, :dt)
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
     @amount = options['amount'].to_f
+    @dt = Date.parse(options['dt'])
   end
 
   def save()
     sql = "INSERT INTO transactions
-    (merchant_id, tag_id, amount)
+    (merchant_id, tag_id, amount, dt)
     VALUES
-    ($1, $2, $3)
+    ($1, $2, $3, $4)
     RETURNING id;"
-    values = [@merchant_id, @tag_id, @amount]
+    values = [@merchant_id, @tag_id, @amount, @dt]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
   end
@@ -43,6 +44,10 @@ class Transaction
     values = [@merchant_id]
     results = SqlRunner.run(sql, values)
     return Merchant.new(results.first())
+  end
+
+  def date()
+    @dt.strftime("%d-%m-%Y")
   end
 
   def Transaction.total()

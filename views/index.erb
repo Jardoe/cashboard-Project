@@ -4,6 +4,8 @@
 
 <table  class="table">
   <tr>
+    <th>Date</th>
+    <th></th>
     <th>Category</th>
     <th></th>
     <th>Merchant</th>
@@ -14,11 +16,13 @@
   </tr>
   <% for transaction in @transactions %>
   <tr>
+    <td> <%= transaction.date() %> </td>
+    <td>|</td>
     <td><a href="/categories/<%=transaction.tag_id%>"><%= transaction.tag.type %></a></td>
     <td>|</td>
     <td><a href="/merchants/<%= transaction.merchant_id%>"><%= transaction.merchant.name %></a></td>
     <td>|</td>
-    <td><img src="/images/credit.png"> <%= transaction.amount %></td>
+    <td><%= transaction.amount %><img src="/images/credit.png"></td>
     <td>|</td>
     <td><form class="" action="/transactions/<%=transaction.id%>/edit" method="get">
       <input class="btn btn--action" action"" type='submit' value="Edit">
