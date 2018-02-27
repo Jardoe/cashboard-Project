@@ -16,5 +16,10 @@ CREATE TABLE transactions(
   id SERIAL4 PRIMARY KEY,
   amount FLOAT NOT NULL,
   merchant_id INT4 REFERENCES merchants(id),
-  tag_id INT4 REFERENCES tags(id),
+  tag_id INT4 REFERENCES tags(id)
 );
+
+
+-- add dt/date to table, date class in initialize (Date.parse), seeded data
+-- method strftime.
+-- order by dt desc
