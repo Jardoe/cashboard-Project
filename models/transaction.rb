@@ -54,6 +54,7 @@ class Transaction
     @dt.strftime("%m")
   end
 
+
   def Transaction.total()
     sql = "SELECT SUM(amount) FROM transactions"
     result = SqlRunner.run(sql)[0]['sum']

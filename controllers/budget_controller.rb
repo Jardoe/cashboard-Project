@@ -12,17 +12,20 @@ get '/budget' do
 end
 
 get '/budget/:id' do
+  @budgets = Budget.all()
   @budget = Budget.find(params[:id])
   erb(:"budgets/edit")
 end
 
 post '/budget/:id' do
+  @budgets = Budget.all()
   budget = Budget.new(params)
   budget.update()
   redirect to '/budget'
 end
 
 get '/month/:id' do
+  @budgets = Budget.all()
   @transactions = Transaction.all()
   @budget = Budget.find(params[:id])
   erb(:"budgets/month")
