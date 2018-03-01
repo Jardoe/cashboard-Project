@@ -1,13 +1,9 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
+require ('pry-byebug')
 require_relative( '../models/transaction.rb' )
 require_relative('../models/category.rb')
 require_relative('../models/merchant.rb')
-
-# get '/transactions' do
-#   @transaction = Transaction.find(params['id'].to_i)
-#   erb(:"transaction/show")
-# end
 
 get '/new' do
   @merchants = Merchant.all()
@@ -33,7 +29,6 @@ get '/transactions/:id/edit' do
 end
 
 post '/transactions/:id' do
-  binding.pry
   transaction = Transaction.new(params)
   transaction.update()
   redirect to (:'transactions/edited')

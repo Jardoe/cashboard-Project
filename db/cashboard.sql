@@ -6,7 +6,8 @@ DROP TABLE budgets;
 CREATE TABLE budgets(
   id SERIAL4 PRIMARY KEY,
   amount INT4 NOT NULL,
-  month VARCHAR(255) NOT NULL
+  month VARCHAR(255) NOT NULL,
+  dt DATE NOT NULL
 );
 
 CREATE TABLE merchants(

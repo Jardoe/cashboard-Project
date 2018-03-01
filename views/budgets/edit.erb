@@ -3,5 +3,7 @@
 <form class="" action="/budget/<%= @budget.id%>" method="post">
   <label for="amount">Amount: </label>
   <input type="number" name="amount" step="any" value="<%=@budget.amount %>"/>
+  <input type="hidden" name="dt" value="<%=@budget.dt%>">
+  <input type="hidden" name="month" value="<%=@budget.month%>">
   <input type="submit" value="Edit transaction">
 </form>

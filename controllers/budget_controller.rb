@@ -14,7 +14,8 @@ get '/budget/:id' do
 end
 
 post '/budget/:id' do
+
   budget = Budget.new(params)
   budget.update()
-  redirect '/budget'
+  redirect to '/budget'
 end

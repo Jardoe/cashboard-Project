@@ -2,22 +2,22 @@ require_relative("../db/sql_runner.rb")
 
 class Budget
 
-  attr_reader(:id, :amount, :month)
+  attr_reader(:id, :amount, :month, :dt)
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @amount = options['amount']
     @month = options['month']
+    @dt = Date.parse(options['dt'])
   end
 
   def save()
     sql = "INSERT INTO budgets
-    (amount, month)
+    (amount, month, dt)
     VALUES
-    ($1, $2)
-    RETURNING id
-    ORDER BY month DESC;"
-    values = [@amount, @month]
+    ($1, $2, $3)
+    RETURNING id;"
+    values = [@amount, @month, @dt]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
   end
@@ -29,9 +29,8 @@ class Budget
     SqlRunner.run(sql, values)
   end
 
-
   def Budget.all()
-    sql = "SELECT * FROM budgets"
+    sql = "SELECT * FROM budgets ORDER BY dt"
     results = SqlRunner.run (sql)
     return results.map { |budget| Budget.new(budget) }
   end
