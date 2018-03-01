@@ -47,6 +47,12 @@ header {
   z-index: 0;
 }
 
+h1{
+  display: inline-block;
+  float: auto;
+}
+
+
 body {
   font-family: 'Archivo Black', sans-serif;
   font-size: 20px;
@@ -54,10 +60,6 @@ body {
   color: #ddd;
   z-index: 0;
 }
-/*
-th{
-  background-color: #1a1a1a;
-} */
 
 .table {
   background-color: #282727;
@@ -71,6 +73,14 @@ th{
   margin-left: auto;
   margin-right: auto;
 
+}
+
+.hide{
+  display: none;
+}
+
+th, td {
+    border-bottom: 3px solid #222;
 }
 
 table{
@@ -116,6 +126,16 @@ width: 100px;
   background-position: left, center;
   background-size: auto 100%;
   width: 100px;
+}
+
+footer{
+  position: fixed;
+  display: flex;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  text-align: center;
+  background-color: #222;
 }
 
 .hyperspace {

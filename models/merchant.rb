@@ -37,7 +37,7 @@ class Merchant
   end
 
   def transactions()
-    sql = "SELECT amount FROM transactions WHERE transactions.merchant_id = $1"
+    sql = "SELECT * FROM transactions WHERE transactions.merchant_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |transaction| Transaction.new(transaction)  }

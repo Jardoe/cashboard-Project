@@ -1,5 +1,5 @@
 
-<h2>Categories: <%= @tag.type %></h2>
+<h2>Categories: <%= @category.type %></h2>
 
 <table class="table">
   <tr>
@@ -11,9 +11,9 @@
   </tr>
   <% for transaction in @transactions%>
   <tr>
-    <td>Date tba</td>
+    <td><%= transaction.date%></td>
     <td>|</td>
-    <td>transaction.merchant</td>
+    <td><%=transaction.merchant.name()%></td>
     <td>|</td>
     <td>£<%= transaction.amount %></td>
   </tr>

@@ -5,11 +5,11 @@
       <th></th>
       <th>Total spent</th>
     </tr>
-    <% for tag in @tags %>
+    <% for category in @categories %>
     <tr>
-      <td><a href="/categories/<%= tag.id %>"><%= tag.type %></a></td>
+      <td><a href="/categories/<%= category.id %>"><%= category.type %></a></td>
       <td>|</td>
-      <td>£<%= tag.total %></td>
+      <td>£<%= category.total %></td>
     </tr>
     <% end %>
   </table>

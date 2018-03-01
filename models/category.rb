@@ -1,7 +1,7 @@
 require_relative("../db/sql_runner.rb")
 require("pry-byebug")
 
-class Tag
+class Category
   attr_reader(:id, :type)
 
   def initialize(options)
@@ -10,7 +10,7 @@ class Tag
   end
 
   def save()
-    sql = "INSERT INTO tags
+    sql = "INSERT INTO categories
     (type)
     VALUES
     ($1)
@@ -21,7 +21,7 @@ class Tag
   end
 
   def update()
-    sql = "UPDATE tags SET type = $1
+    sql = "UPDATE categories SET type = $1
     WHERE id = $2"
     values = [@type, @id]
     SqlRunner.run(sql, values)
@@ -31,7 +31,7 @@ class Tag
     sql = "
       SELECT merchants.* FROM merchants
       INNER JOIN transactions t ON t.merchant_id = merchants.id
-      WHERE t.tag_id = $1;"
+      WHERE t.category_id = $1;"
       values = [@id]
       results = SqlRunner.run(sql, values)
       return results.map { |merchant| Merchant.new(merchant) }
@@ -40,35 +40,35 @@ class Tag
   def total()
     sql = "
       SELECT SUM (amount) FROM transactions
-      INNER JOIN tags ON tags.id = transactions.tag_id
-      WHERE tags.id = $1"
+      INNER JOIN categories ON categories.id = transactions.category_id
+      WHERE categories.id = $1"
       values = [@id]
       result = SqlRunner.run(sql, values)[0]["sum"].to_f
       return result
   end
 
   def transactions()
-    sql = "SELECT amount FROM transactions WHERE transactions.tag_id = $1"
+    sql = "SELECT * FROM transactions WHERE transactions.category_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map { |transaction| Transaction.new(transaction)  }
   end
 
-  def Tag.find(id)
-    sql = "SELECT * FROM tags WHERE id = $1"
+  def Category.find(id)
+    sql = "SELECT * FROM categories WHERE id = $1"
     values = [id]
     results = SqlRunner.run(sql, values)
-    return Tag.new(results.first())
+    return Category.new(results.first())
   end
 
-  def Tag.all()
-    sql = "SELECT * FROM tags"
+  def Category.all()
+    sql = "SELECT * FROM categories"
     results = SqlRunner.run (sql)
-    return results.map { |tag| Tag.new(tag) }
+    return results.map { |category| Category.new(category) }
   end
 
-  def Tag.delete_all()
-    sql = "DELETE FROM tags"
+  def Category.delete_all()
+    sql = "DELETE FROM categories"
     SqlRunner.run(sql)
   end
 

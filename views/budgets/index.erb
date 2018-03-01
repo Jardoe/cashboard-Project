@@ -1,0 +1,27 @@
+<h1>Budgets</h1>
+
+<table class="table">
+  <tr>
+    <th>Month</th>
+    <th></th>
+    <th>Budget</th>
+  </tr>
+
+  <% for budget in @budgets %>
+  <tr>
+    <td><label for="month"></label><%= budget.month %></td>
+    <td>|</td>
+    <td><%= budget.amount%></td>
+    <td> <form class="" action="/budget/<%=budget.id%>" method="get">
+      <input class="btn btn--action" action="" type='submit' value="Edit">
+    </form></td>
+  </tr>
+  <% end %>
+</table>
+
+<!-- <form class="" action="/budget" method="post"> -->
+<!-- <input type="submit" value="Update amounts"> -->
+<!-- <label for="amount"></label> -->
+
+  <!-- <input type="hidden" name="id"  id="budget.id" value="<%= budget.id%>"/> -->
+  <!-- <input type="number" name="amount" step="any" id="amount" value="<%=budget.amount%>"/> -->

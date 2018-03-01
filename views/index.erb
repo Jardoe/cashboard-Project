@@ -18,7 +18,7 @@
   <tr>
     <td> <%= transaction.date() %> </td>
     <td>|</td>
-    <td><a href="/categories/<%=transaction.tag_id%>"><%= transaction.tag.type %></a></td>
+    <td><a href="/categories/<%=transaction.category_id%>"><%= transaction.category.type %></a></td>
     <td>|</td>
     <td><a href="/merchants/<%= transaction.merchant_id%>"><%= transaction.merchant.name %></a></td>
     <td>|</td>
