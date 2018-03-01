@@ -45,7 +45,6 @@ class Budget
   def Budget.delete_all()
     sql = "DELETE FROM budgets"
     SqlRunner.run(sql)
-
   end
-
+  
 end

@@ -1,7 +1,17 @@
 
+<div class="dropdown">
+<button class="dropbtn">Month</button>
+  <div class="dropdown-content">
+    <% for budget in @budgets%>
+      <a href="/month/<%= budget.id%>"><%= budget.month %></a>
+    <% end %>
+  </div>
+</div>
+
 <p>Total spent: £<%= @total %></p>
 
 
+<h1>Recent transactions</h1>
 <table  class="table">
   <tr>
     <th>Date</th>

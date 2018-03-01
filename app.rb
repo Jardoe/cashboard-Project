@@ -7,6 +7,7 @@ require_relative('controllers/budget_controller')
 
 
 get '/' do
+  @budgets = Budget.all()
   @transactions = Transaction.all()
   @total = Transaction.total()
   erb(:index)

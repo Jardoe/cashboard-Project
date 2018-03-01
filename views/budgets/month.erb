@@ -1,0 +1,29 @@
+<h1> <%= @budget.month %></h1>
+
+<h2>Amount set for this month: <%=@budget.amount%></h2>
+
+<table  class="table">
+  <tr>
+    <th>Date</th>
+    <th></th>
+    <th>Category</th>
+    <th></th>
+    <th>Merchant</th>
+    <th></th>
+    <th>Amount (GCS)</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% for transaction in @transactions %>
+  <tr>
+    <td> <%= transaction.date %> </td>
+    <td>|</td>
+    <td><%= transaction.category.type %></td>
+    <td>|</td>
+    <td><%= transaction.merchant.name %></td>
+    <td>|</td>
+    <td><%= transaction.amount %></td>
+    <td>|</td>
+  </tr>
+  <% end %>

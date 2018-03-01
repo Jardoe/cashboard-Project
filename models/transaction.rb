@@ -68,7 +68,7 @@ class Transaction
   end
 
   def Transaction.all()
-    sql = "SELECT * FROM transactions;"
+    sql = "SELECT * FROM transactions ORDER BY dt DESC"
     results = SqlRunner.run (sql)
     return results.map { |transaction| Transaction.new(transaction) }
   end
