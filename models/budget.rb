@@ -29,6 +29,14 @@ class Budget
     SqlRunner.run(sql, values)
   end
 
+
+  def transactions()
+    sql = "SELECT * FROM transactions WHERE transactions.budget_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |transaction| Transaction.new(transaction)  }
+  end
+
   def Budget.all()
     sql = "SELECT * FROM budgets ORDER BY dt"
     results = SqlRunner.run (sql)
@@ -46,5 +54,5 @@ class Budget
     sql = "DELETE FROM budgets"
     SqlRunner.run(sql)
   end
-  
+
 end

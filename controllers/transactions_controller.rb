@@ -6,7 +6,6 @@ require_relative('../models/category.rb')
 require_relative('../models/merchant.rb')
 
 
-
 get '/new' do
   @budgets = Budget.all()
   @merchants = Merchant.all()

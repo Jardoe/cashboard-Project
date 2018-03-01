@@ -10,15 +10,16 @@ class Transaction
     @category_id = options['category_id'].to_i
     @amount = options['amount'].to_f
     @dt = Date.parse(options['dt'])
+    @budget_id = options['budget_id'].to_i
   end
 
   def save()
     sql = "INSERT INTO transactions
-    (merchant_id, category_id, amount, dt)
+    (merchant_id, category_id, amount, dt, budget_id)
     VALUES
-    ($1, $2, $3, $4)
+    ($1, $2, $3, $4, $5)
     RETURNING id;"
-    values = [@merchant_id, @category_id, @amount, @dt]
+    values = [@merchant_id, @category_id, @amount, @dt, @budget_id]
     results = SqlRunner.run(sql, values)
     @id = results[0]['id'].to_i
   end
@@ -53,7 +54,6 @@ class Transaction
   def month()
     @dt.strftime("%m")
   end
-
 
   def Transaction.total()
     sql = "SELECT SUM(amount) FROM transactions"

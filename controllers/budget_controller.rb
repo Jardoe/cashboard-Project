@@ -26,7 +26,7 @@ end
 
 get '/month/:id' do
   @budgets = Budget.all()
-  @transactions = Transaction.all()
-  @budget = Budget.find(params[:id])
+  @budget = Budget.find(params['id'].to_i)
+  @transactions = @budget.transactions
   erb(:"budgets/month")
 end

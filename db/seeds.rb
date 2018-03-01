@@ -5,9 +5,10 @@ require_relative( "../models/budget.rb")
 require("pry-byebug")
 
 Transaction.delete_all()
+Budget.delete_all()
 Category.delete_all()
 Merchant.delete_all()
-Budget.delete_all()
+
 
 category1 = Category.new({"type" => "Kyber Crystals"})
 category2 = Category.new({"type" => "Droids"})
@@ -28,42 +29,6 @@ merchant1.save()
 merchant2.save()
 merchant3.save()
 merchant4.save()
-
-transaction1 = Transaction.new(
-  {"merchant_id" => merchant1.id,
-   "category_id" => category2.id,
-   "amount" => 18.43,
-   "dt" => "21-02-22"})
-
-transaction2 = Transaction.new(
-  {"merchant_id" => merchant2.id,
-   "category_id" => category4.id,
-   "amount" => 9.99,
-   "dt" => "21-03-02"})
-
-transaction3 = Transaction.new(
-  {"merchant_id" => merchant3.id,
-   "category_id" => category1.id,
-   "amount" => 48.98,
-   "dt" => "21-12-22"})
-
-transaction4 = Transaction.new(
-  {"merchant_id" => merchant4.id,
-    "category_id" => category3.id,
-    "amount" => 500,
-    "dt" => "22-07-14"})
-
-transaction5 = Transaction.new(
-  {"merchant_id" => merchant3.id,
-    "category_id" => category1.id,
-    "amount" => 20.00,
-    "dt" => "21-05-31"})
-
-transaction1.save()
-transaction2.save()
-transaction3.save()
-transaction4.save()
-transaction5.save()
 
 budget1 = Budget.new({"amount" => 1000, "month" => "January", "dt" => "21-01-01"})
 budget2 = Budget.new({"amount" => 1000, "month" => "February", "dt" => "21-02-02"})
@@ -90,6 +55,48 @@ budget9.save()
 budget10.save()
 budget11.save()
 budget12.save()
+
+
+transaction1 = Transaction.new(
+  {"merchant_id" => merchant1.id,
+   "category_id" => category2.id,
+   "budget_id" => budget2.id,
+   "amount" => 18.43,
+   "dt" => "21-02-22"})
+
+transaction2 = Transaction.new(
+  {"merchant_id" => merchant2.id,
+   "category_id" => category4.id,
+   "budget_id" => budget2.id,
+   "amount" => 9.99,
+   "dt" => "21-02-02"})
+
+transaction3 = Transaction.new(
+  {"merchant_id" => merchant3.id,
+   "category_id" => category1.id,
+   "budget_id" => budget12.id,
+   "amount" => 48.98,
+   "dt" => "21-12-22"})
+
+transaction4 = Transaction.new(
+  {"merchant_id" => merchant4.id,
+    "category_id" => category3.id,
+    "budget_id" => budget7.id,
+    "amount" => 500,
+    "dt" => "22-07-14"})
+
+transaction5 = Transaction.new(
+  {"merchant_id" => merchant3.id,
+    "category_id" => category1.id,
+    "budget_id" => budget5.id,
+    "amount" => 20.00,
+    "dt" => "21-05-31"})
+
+transaction1.save()
+transaction2.save()
+transaction3.save()
+transaction4.save()
+transaction5.save()
 
 binding.pry
 nil

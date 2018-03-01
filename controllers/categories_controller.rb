@@ -4,7 +4,6 @@ require_relative('../models/category.rb')
 require_relative('../models/budget.rb')
 
 
-
 get '/categories' do
   @budgets = Budget.all()
   @categories = Category.all()

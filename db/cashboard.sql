@@ -25,6 +25,7 @@ CREATE TABLE transactions(
   amount FLOAT NOT NULL,
   merchant_id INT4 REFERENCES merchants(id) NOT NULL,
   category_id INT4 REFERENCES categories(id) NOT NULL,
+  budget_id INT4 REFERENCES budgets(id) NOT NULL,
   dt DATE NOT NULL
 );
 
