@@ -3,7 +3,7 @@
 
 <form class="" action="/transactions/<%=@transaction.id%>" method="post">
   <label>Date:</label>
-    <input type="date" name="dt" required>
+    <input type="date" name="dt" required selected="<=% @transaction.date %>">
 
   <label for="category-select"> Select Category: </label>
   <select name="category_id" id="category_select" selected="<=% @transaction.category_id %>">

@@ -154,14 +154,14 @@ transaction11 = Transaction.new(
   {"merchant_id" => merchant4.id,
     "category_id" => category4.id,
     "budget_id" => budget4.id,
-    "amount" => 20.00,
+    "amount" => 36.39,
     "dt" => "21-04-19"})
 
 transaction12 = Transaction.new(
   {"merchant_id" => merchant8.id,
     "category_id" => category6.id,
     "budget_id" => budget5.id,
-    "amount" => 20.00,
+    "amount" => 94,
     "dt" => "21-05-14"})
 
 transaction13 = Transaction.new(
@@ -175,7 +175,7 @@ transaction14 = Transaction.new(
   {"merchant_id" => merchant3.id,
     "category_id" => category1.id,
     "budget_id" => budget5.id,
-    "amount" => 20.00,
+    "amount" => 180,
     "dt" => "21-05-31"})
 
 
