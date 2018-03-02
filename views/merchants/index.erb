@@ -1,5 +1,10 @@
 <h1>Merchants</h1>
 
+
+<p> <a href="/merchants/new">Add a new Merchant</a> </p>
+<br>
+
+
   <table class="table">
     <tr>
       <th>Merchant name</th>
@@ -10,9 +15,7 @@
     <tr>
       <td><a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a></td>
       <td>|</td>
-      <td><%= merchant.total %> <img src="/images/credit.png"></td>
+      <td><%= merchant.total %></td>
     </tr>
     <% end %>
   </table>
-
-<p> <a href="/merchants/new">Add a new Merchant</a> </p>

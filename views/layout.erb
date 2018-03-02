@@ -6,28 +6,53 @@
     <link rel="stylesheet" type="text/css" href="/styles/general.css"/>
     <link href="/Starjedi.ttf" rel="stylesheet"/>
 
-    <title>G.E.D.I.</title>
+    <title>GEDI</title>
   </head>
   <body>
     <header>
   <a href="/"><img class="logo" src="/images/Empire_logo.png" />
     </a>
-  <a href="/" class="logo_words"> Galactic Empire: Disbursement investor</a>
+  <a href="/" class="logo_words"> Galactic Empire: <br> Disbursement investor</a>
     </header>
     <main>
       <nav>
         <ul>
-          <li><a href="/">Home</a> </li>
-          <li><a href="/new">Add a transaction</a></li>
-          <li><a href="/categories">Categories</a></li>
-          <li><a href="/merchants">Merchants</a></li>
-          <li> <a href="/budget">Budgets</a></li>
           <li><div class="dropdown">
-          <button class="dropbtn">Month</button>
-            <div class="dropdown-content">
-              <% for budget in @budgets%>
-                <a href="/month/<%= budget.id%>"><%= budget.month %></a>
-              <% end %>
+            <a href="/"><button class="dropbtn">Home</button></a> </li>
+
+          <li><div class="dropdown">
+            <a href="/new"><button class="dropbtn"> Add a Transaction</button></a>
+          </div></li>
+
+          <li><div class="dropdown">
+            <a href="/categories"><button class="dropbtn">Categories</button>
+              <div class="dropdown-content"> </a>
+              <a href="/categories">All Categories</a>
+              <a href="/categories/new">Add new Category</a>
+                <% for category in @categories%>
+                  <a href="/categories/<%=category.id %>"><%= category.type%></a>
+                <% end %>
+              </div>
+            </div></li>
+
+          <li><div class="dropdown">
+         <a href="/merchants"><button class="dropbtn">Merchants</button>
+            <div class="dropdown-content"></a>
+              <a href="/merchants">All Merchants</a>
+              <a href="/merchants/new">Add new Merchant</a>
+                <% for merchant in @merchants%>
+                  <a href="/merchants/<%=merchant.id %>"><%= merchant.name%></a>
+                <% end %>
+              </div>
+            </div></li>
+
+          <li><div class="dropdown">
+          <a href="/budget"><button class="dropbtn">Month</button>
+            <div class="dropdown-content"> </a>
+              <a href="/budget">All Budgets</a>
+                <% for budget in @budgets%>
+                  <a href="/month/<%= budget.id%>"><%= budget.month %></a>
+                <% end %>
             </div>
           </div></li>
         </ul>
@@ -39,5 +64,5 @@
     <div class="star-right"></div>
     <div class="star-left"></div>
   </body>
-  <footer> <a href="/hyperspace"> Go to hyperspace </a> </footer>
+  <footer> <a href="/hyperspace"> Escape! </a> </footer>
 </html>

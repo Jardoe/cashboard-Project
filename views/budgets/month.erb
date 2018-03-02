@@ -1,6 +1,9 @@
 <h1> <%= @budget.month %></h1>
 
-<h2>Amount set for this month: <%=@budget.amount%></h2>
+<h2>Budget: <%=@budget.amount%></h2>
+<h2>Total spent this month: <%=@budget.total %></h2>
+
+<h2>Remaining: <%= @left%></h2>
 
 <table  class="table">
   <tr>

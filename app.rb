@@ -7,6 +7,8 @@ require_relative('controllers/budget_controller')
 
 
 get '/' do
+  @categories = Category.all()
+  @merchants = Merchant.all()
   @budgets = Budget.all()
   @transactions = Transaction.all()
   @total = Transaction.total()

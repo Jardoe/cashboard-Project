@@ -29,6 +29,15 @@ class Budget
     SqlRunner.run(sql, values)
   end
 
+  def total()
+    sql = "
+      SELECT SUM (transactions.amount) FROM transactions
+      INNER JOIN budgets ON budgets.id = transactions.budget_id
+      WHERE budgets.id = $1"
+      values = [@id]
+      result = SqlRunner.run(sql, values)[0]["sum"].to_f
+      return result
+  end
 
   def transactions()
     sql = "SELECT * FROM transactions WHERE transactions.budget_id = $1"

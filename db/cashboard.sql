@@ -28,13 +28,3 @@ CREATE TABLE transactions(
   budget_id INT4 REFERENCES budgets(id) NOT NULL,
   dt DATE NOT NULL
 );
-
-
--- add dt/date to table, date class in initialize (Date.parse), seeded data
--- method strftime.
--- order by dt desc
-
-
--- sanitised name
--- downcase, split(" ")
---map for each word capitalize

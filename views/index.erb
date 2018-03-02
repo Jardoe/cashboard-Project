@@ -1,9 +1,7 @@
-
-
-<p>Total spent: £<%= @total %></p>
-
-
 <h1>Recent transactions</h1>
+<br>
+<p>Total spent: <%= @total %></p>
+<br>
 <table  class="table">
   <tr>
     <th>Date</th>
@@ -19,13 +17,13 @@
   <% for transaction in @transactions %>
   <tr>
     <td> <%= transaction.date() %> </td>
-    <td>|</td>
+    <td> </td>
     <td><a href="/categories/<%=transaction.category_id%>"><%= transaction.category.type %></a></td>
-    <td>|</td>
+    <td> </td>
     <td><a href="/merchants/<%= transaction.merchant_id%>"><%= transaction.merchant.name %></a></td>
-    <td>|</td>
-    <td><%= transaction.amount %><img src="/images/credit.png"></td>
-    <td>|</td>
+    <td> </td>
+    <td><%= transaction.amount %></td>
+    <td> </td>
     <td><form class="" action="/transactions/<%=transaction.id%>/edit" method="get">
       <input class="btn btn--action" action"" type='submit' value="Edit">
     </form>
